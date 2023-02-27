@@ -1,4 +1,7 @@
 import Head from 'next/head'
+import Link from 'next/link'
+
+import UserForm from '@/components/UserForm'
 
 export default function Home() {
   return (
@@ -9,15 +12,22 @@ export default function Home() {
         <meta name='viewport' content='width=device-width, initial-scale=1' />
         <link rel='icon' href='/favicon.ico' />
       </Head>
-      <main className='container'>
-        First step for doing the rent app
-        <button
-          onClick={() => {
-            alert('Good job!')
-          }}
-        >
-          Click Me!
-        </button>
+      <main className='container-fluid'>
+        <nav>
+          <ul>
+            <li>
+              <Link href='/users' role='button'>
+                <strong>Users</strong>
+              </Link>
+              <Link href='/transaction' role='button'>
+                <strong>Transaction</strong>
+              </Link>
+            </li>
+          </ul>
+        </nav>
+        <section>
+          <UserForm />
+        </section>
       </main>
     </>
   )
