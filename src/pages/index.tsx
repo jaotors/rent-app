@@ -1,9 +1,17 @@
+import { useState } from 'react'
 import Head from 'next/head'
 import Link from 'next/link'
 
 import UserForm from '@/components/UserForm'
+import Modal from '@/components/Modal'
 
 export default function Home() {
+  const [modalAddIsOpen, setModalAddIsOpen] = useState<boolean>(false)
+
+  const handleUserModal = (status: boolean): void => {
+    setModalAddIsOpen(status)
+  }
+
   return (
     <>
       <Head>
@@ -26,8 +34,22 @@ export default function Home() {
           </ul>
         </nav>
         <section>
-          <UserForm />
+          <button
+            onClick={() => {
+              handleUserModal(true)
+            }}
+          >
+            Add User
+          </button>
         </section>
+        <Modal
+          isOpen={modalAddIsOpen}
+          onClose={() => {
+            handleUserModal(false)
+          }}
+        >
+          <UserForm />
+        </Modal>
       </main>
     </>
   )

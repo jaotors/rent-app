@@ -11,7 +11,6 @@ const UserForm = () => {
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors }
   } = useForm<UserInputs>()
   const onSubmit: SubmitHandler<UserInputs> = (data) => console.log(data)
@@ -27,6 +26,8 @@ const UserForm = () => {
           Last Name
           <input id='lastName' placeholder='Doe' {...register('lastName')} />
         </label>
+      </div>
+      <div>
         <label htmlFor='contactNum'>
           Contact Number
           <input
@@ -35,11 +36,15 @@ const UserForm = () => {
             {...register('contactNum')}
           />
         </label>
+      </div>
+      <div>
         <label htmlFor='note'>
           Note
           <textarea
             id='note'
             placeholder='Reason or anything etc..'
+            rows={4}
+            cols={50}
             {...register('note')}
           />
         </label>
