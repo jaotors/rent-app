@@ -48,7 +48,8 @@ export default function Home() {
         </section>
         <Modal
           isOpen={modalAddIsOpen}
-          onClose={() => {
+          onClose={(event) => {
+            event.preventDefault()
             handleUserModal(false)
           }}
           title='Add User'
