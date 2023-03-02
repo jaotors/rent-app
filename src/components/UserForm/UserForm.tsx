@@ -1,22 +1,26 @@
 import { useForm, SubmitHandler } from 'react-hook-form'
 
-type UserInputs = {
+export type UserInputs = {
   firstName: string
   lastName: string
   contactNum: string
   note: string
 }
 
-const UserForm = () => {
+type UserFormProps = {
+  onSubmit: Function
+}
+
+const UserForm = ({ onSubmit }: UserFormProps) => {
   const {
     register,
     handleSubmit,
     formState: { errors }
   } = useForm<UserInputs>()
-  const onSubmit: SubmitHandler<UserInputs> = (data) => console.log(data)
+  const onSubmitHandler: SubmitHandler<UserInputs> = (data) => onSubmit(data)
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form onSubmit={handleSubmit(onSubmitHandler)}>
       <div className='grid'>
         <label htmlFor='firstName'>
           First Name

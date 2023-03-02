@@ -2,7 +2,7 @@ import { useState } from 'react'
 import Head from 'next/head'
 import Link from 'next/link'
 
-import UserForm from '@/components/UserForm'
+import UserForm, { UserInputs } from '@/components/UserForm'
 import Modal from '@/components/Modal'
 
 export default function Home() {
@@ -10,6 +10,10 @@ export default function Home() {
 
   const handleUserModal = (status: boolean): void => {
     setModalAddIsOpen(status)
+  }
+
+  const handleSubmit = (data: UserInputs) => {
+    console.log(data)
   }
 
   return (
@@ -48,7 +52,7 @@ export default function Home() {
             handleUserModal(false)
           }}
         >
-          <UserForm />
+          <UserForm onSubmit={handleSubmit} />
         </Modal>
       </main>
     </>
