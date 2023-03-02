@@ -51,6 +51,7 @@ export default function Home() {
           onClose={() => {
             handleUserModal(false)
           }}
+          title='Add User'
         >
           <UserForm onSubmit={handleSubmit} />
         </Modal>
